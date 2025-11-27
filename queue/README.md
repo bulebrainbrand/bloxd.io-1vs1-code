@@ -54,6 +54,9 @@ QueueListOperatorInterfaceに基づく
 */
 canMatching()
 /**
+* myMatcherServiceからdoMatchingを呼び出し
+* idをAllQueueHandlerに渡して全Queueから削除したのち
+* idを返す
 * @returns {array.<playerId>}
 */
 doMatching()
@@ -115,6 +118,7 @@ static deleteId(deleteId)
 */
 canMatching()
 /**
+* id2つを返すのみで、副作用はない
 * @returns {array.<playerId>}
 */
 doMatching()
