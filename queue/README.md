@@ -79,6 +79,10 @@ deleteId(id)
 * @returns {void}
 */
 clearQueue()
+/**
+* @returns {void}
+*/
+runCheckQueue()
 ```
 ### QueueManager
 QueueManagerInterfaceに基づく
