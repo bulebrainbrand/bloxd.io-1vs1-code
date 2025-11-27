@@ -42,6 +42,11 @@ getQueue()
 * @returns {void}
 */
 clearQueue()
+/**
+* 存在しないidをqueueから取り除く
+* @returns {void}
+*/
+checkQueue()
 ```
 ### QueueListOperator
 QueueListOperatorInterfaceに基づく
