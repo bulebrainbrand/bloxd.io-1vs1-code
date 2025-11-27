@@ -13,7 +13,7 @@
 シングルトンデザイン
 ### QueueManagerFactory
 QueueManagerを制作しつつQueueManagerCollectorに追加する
-ユーティリティデザイン
+ファクトリーデザイン
 ### AllQueueHandler
 QueueManagerCollectorから受け取った複数のQueueManagerを操作する
 ユーティリティデザイン
