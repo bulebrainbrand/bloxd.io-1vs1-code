@@ -17,6 +17,10 @@ QueueManagerを制作しつつQueueManagerCollectorに追加する
 ### AllQueueHandler
 QueueManagerCollectorから受け取った複数のQueueManagerを操作する
 ユーティリティデザイン
+### MatcherServiceInterface
+仮想上のインターフェイス
+### MatcherService
+マッチングの判定、マッチングの動作を行う
 ## メゾット等細かい定義
 ### QueueListOperatorInterface
 ```js
@@ -44,6 +48,7 @@ QueueListOperatorInterfaceに基づく
 ### QueueManagerInterface
 ```js
 #myQueueListOperator
+#myMatcherService
 /**
 * @returns {boolean} マッチングできるかどうか
 */
@@ -69,9 +74,7 @@ clearQueue()
 ```
 ### QueueManager
 QueueManagerInterfaceに基づく
-DIでQueueListOperatorInterfaceをコンストラクタに求める
-canMatchingはQueueListのlength>=2かどうか
-doMatchingはQueueListの先頭2つのidを返し、全てのQueueListからそのid2つを削除する
+DIでQueueListOperatorとMatcherServiceをコンストラクタに求める
 ### QueueManagerCollector
 ```js
 #queueManagerList
@@ -90,9 +93,10 @@ get()
 /**
 * QueueManagerCollectorに追加しつつQueueManagerInstanceを返す
 * @param {QueueListOperator|null} - QueueListOperatorInterfaceに基づいているクラス
+* @param {MatcherService|null} - MatcherServiceInterfaceに基づいているクラス
 * @returns {QueueManagerInstance}
 */
-make()
+static make()
 ```
 ### AllQueueHandler
 ```js
@@ -101,7 +105,22 @@ make()
 * @param {playerId} deleteId 
 * @returns {void}
 */
-deleteId(deleteId)
+static deleteId(deleteId)
 ```
+### MatcherServiceInterface
+```js
+#myQueueListOperator
+/**
+* @returns {boolean}
+*/
+canMatching()
+/**
+* @returns {array.<playerId>}
+*/
+doMatching()
+```
+### MatcherService
+MatcherServiceInterfaceの通りに作る
+2人でマッチング(1v1)の設計
 
 
