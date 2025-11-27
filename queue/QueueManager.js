@@ -21,8 +21,9 @@ const QueueManager = class{
     return this.#myMatcherService.canMatching()
   }
   doMatching(){
+    this.runCheckQueue()
     const [id1,id2] = this.#myMatcherService.doMatching()
-    if(id2 == null || !api.checkValid(id2))throw new TypeError("cant Matching!")
+    if(id1 == null || id2 == null)throw new TypeError("cant Matching now.")
     AllQueueHandler.deleteId(id1)
     AllQueueHandler.deleteId(id2)
     return [id1,id2]
